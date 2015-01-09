@@ -2,14 +2,25 @@ __author__ = 'user'
 
 import httplib
 import os
+import string
 # conn = http.client.HTTPConnection("localhost", 8080)
 # conn.request("GET", "/api/worker")
 
 branchName = os.environ.get('TRAVIS_BRANCH')
+if branchName is None:
+    branchName = 'branchName'
 repoSlug = os.environ.get('TRAVIS_REPO_SLUG')
+if repoSlug is None:
+    repoSlug = 'account/projectName'
 
-print(os.environ.get('TRAVIS_BRANCH'))
-print(os.environ.get('TRAVIS_REPO_SLUG'))
+account = repoSlug.split('/')[0];
+projectName = repoSlug.split('/')[1];
+
+print('branchName : ' + branchName)
+print('repoSlug : ' + repoSlug)
+
+apiUrl = '/account/' + account + '/project/' + projectName + '/branch/' + branchName
+print('apiUrl : ' + apiUrl)
 
 # print('branchName : ' + branchName)
 # print('repoSlug : ' + repoSlug)
