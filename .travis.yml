@@ -1,0 +1,12 @@
+language: python
+complier:
+    - "3.4"
+
+install:
+  - "pip install ."
+
+script: python main.py
+
+branch:
+  only:
+    - master
