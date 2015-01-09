@@ -1,8 +1,7 @@
 __author__ = 'user'
 
-import http.client
+import httplib
 import os
-import urllib.parse
 # conn = http.client.HTTPConnection("localhost", 8080)
 # conn.request("GET", "/api/worker")
 
@@ -20,7 +19,7 @@ header = {
    'Accept': 'application/vnd.travis-ci.2+json',
    'Host': 'api.travis-ci.org'
 }
-conn = http.client.HTTPSConnection('api.travis-ci.org')
+conn = httplib.HTTPSConnection('api.travis-ci.org')
 conn.request("GET", "/", headers=header)
 
 
