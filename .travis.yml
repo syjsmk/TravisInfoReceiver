@@ -1,5 +1,5 @@
 language: python
-complier:
+compiler:
     - "3.4"
 
 install:
