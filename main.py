@@ -8,10 +8,10 @@ import string
 
 branchName = os.environ.get('TRAVIS_BRANCH')
 if branchName is None:
-    branchName = 'branchName'
+    branchName = 'master'
 repoSlug = os.environ.get('TRAVIS_REPO_SLUG')
 if repoSlug is None:
-    repoSlug = 'account/projectName'
+    repoSlug = 'syjsmk/sky-sample'
 
 account = repoSlug.split('/')[0];
 projectName = repoSlug.split('/')[1];
@@ -19,19 +19,22 @@ projectName = repoSlug.split('/')[1];
 print('branchName : ' + branchName)
 print('repoSlug : ' + repoSlug)
 
-apiUrl = '/account/' + account + '/project/' + projectName + '/branch/' + branchName
+apiUrl = '/api/execution-unit/account/' + account + '/project/' + projectName + '/branch/' + branchName
 print('apiUrl : ' + apiUrl)
 
 # print('branchName : ' + branchName)
 # print('repoSlug : ' + repoSlug)
 
-header = {
-   'User-Agent': 'MyClient/1.0.0',
-   'Accept': 'application/vnd.travis-ci.2+json',
-   'Host': 'api.travis-ci.org'
-}
-conn = httplib.HTTPSConnection('api.travis-ci.org')
-conn.request("GET", "/", headers=header)
+# header = {
+#    'User-Agent': 'MyClient/1.0.0',
+#    'Accept': 'application/vnd.travis-ci.2+json',
+#    'Host': 'api.travis-ci.org'
+# }
+# conn = httplib.HTTPSConnection('api.travis-ci.org')
+# conn.request("GET", "/", headers=header)
+
+conn = httplib.HTTPConnection('skyngin.io')
+conn.request("GET", apiUrl)
 
 
 
